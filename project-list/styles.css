@@ -28,20 +28,24 @@ h1 {
     color: white;
     -webkit-text-stroke: 2px black;
 }
+
 button{
     float: right;
 }
 
 .hov{
     display: none;
-    
 }
 
 td:hover .hov{
     display: inline;
 }
+
 td:hover .btn{
     display: inline;
 }
 
+.error-message{
+    color: red;
+}
 
