@@ -12,6 +12,7 @@ loginForm.addEventListener("submit", (event)  =>{
     var validPassword = "password";
 
     if (username === validUsername && password === validPassword) {
+        sessionStorage.setItem("isLoggedIn","true")
         // Redirect to the project list page
         window.location.href = "index.html";
     } else {
