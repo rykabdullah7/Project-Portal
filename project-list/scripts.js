@@ -18,7 +18,7 @@ const stars = document.getElementsByClassName("hov");
 Array.from(stars).forEach((star) => {
     star.addEventListener('click', () => {
         const element = star.firstChild;
-        (element.style.color == "goldenrod") ? (element.style.color = "white") : (element.style.color = "goldenrod");
+        (element.style.color == "rgb(218, 165, 32)") ? (element.style.color = "rgb(255,255,255)") : (element.style.color = "rgb(218, 165, 32)");
         star.classList.remove("hov");
     })
 })
