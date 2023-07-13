@@ -1,9 +1,10 @@
 module.exports = {
-  async rewrites() {
+  async redirects() {
     return [
       {
-        source: '/:path*',
+        source: '/',
         destination: '/login.html',
+        permanent: true,
       },
     ];
   },
