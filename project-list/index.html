@@ -11,6 +11,18 @@
 </head>
 
 <body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Check login status
+            var isLoggedIn = sessionStorage.getItem("isLoggedIn");
+
+            if (!isLoggedIn) {
+                // Redirect to login page
+                window.location.href = "login.html";
+            }
+        });
+
+    </script>
     <h1>Project Portal</h1>
     <button id="unhide" class="btn btn-primary">Show all projects</button>
     <div class="clear"></div>
