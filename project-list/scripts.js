@@ -1,24 +1,36 @@
 const hideButtons = document.getElementsByClassName("hid");
 Array.from(hideButtons).forEach((button) => {
-    button.addEventListener('click',() => {
+    button.addEventListener('click', () => {  
         const element = button.parentNode;
-        element.style.display = 'none';
-    } )
+        const starColor = element.querySelector(".hov > span").style.color;
+        if (starColor !== "rgb(218, 165, 32)") {
+        element.style.display = "none";
+    }
+    })
 })
 
 const unhideButtons = document.getElementById("unhide");
 unhideButtons.addEventListener("click", () => {
-    Array.from(hideButtons).forEach((button) =>{
+    Array.from(hideButtons).forEach((button) => {
         const element = button.parentNode;
         element.style.display = 'block';
     })
 })
 
 const stars = document.getElementsByClassName("hov");
-Array.from(stars).forEach((star)=> {
-    star.addEventListener('click', () =>{
+Array.from(stars).forEach((star) => {
+    star.addEventListener('click', () => {
         const element = star.firstChild;
-        (element.style.color == "goldenrod")? (element.style.color= "white"): (element.style.color="goldenrod");
-        star.classList.remove("hov");
+        if(element.style.color !== "rgb(218, 165, 32)"){
+            element.style.color = "rgb(218, 165, 32)";
+            star.classList.remove("hov");
+        }
+        else{
+            element.style.color = "rgb(255, 255, 255)";
+            star.classList.add("hov");
+        }
+        
     })
 })
+
+
