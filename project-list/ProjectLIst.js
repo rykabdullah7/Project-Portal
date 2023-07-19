@@ -1,46 +1,70 @@
-<!DOCTYPE html>
-
-<html>
-
-<head>
-    <meta charset="udf-18">
-    <title>Project Portal</title>
-    <link rel="stylesheet" href="styles.css" type="text/css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-</head>
-
-<body>
-    <!-- <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Check login status
-            var token = sessionStorage.getItem("accessToken");
-
-            if (!token) {
-                // Redirect to login page
-              ReactDOM.render(<LoginForm />, document.querySelector(".project-list"));
-            } else {
-                // User is logged in, show the content
-                document.getElementById("content").style.display = "block";
-            }
-        });
-    </script> -->
-
-    <div class="project-list" id="content"></div>
-
-    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-    <script type="text/babel" src="ProjectList.js"></script>
-    
-    <script type="text/babel">       
-            ReactDOM.render(<ProjectList />, document.querySelector(".project-list"));
-    </script>
-
-    <script src="scripts.js"></script>
 
 
-</body>
+class ProjectList extends React.Component {
 
-</html>
+    render() {
+        return (
+            <>
+                <h1>Project Portal</h1>
+                <button id="unhide" className="btn btn-primary">Show all projects</button>
+                <div className="clear"></div>
+                <div>
+                    <table width="100%" className="table-hover custom-table">
+                        <tbody className="custom-tbody">
+                            <tr>
+                                <td><span>project 1</span><button type="button" className="hov btn-link"><span
+                                    className="bi bi-star-fill"></span></button><button
+                                        className="btn btn-primary hid">Hide</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>project 2</span><button type="button" className="hov btn-link"><span
+                                    className="bi bi-star-fill"></span></button><button
+                                        className="btn btn-primary hid">Hide</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>project 3</span><button type="button" className="hov btn-link"><span
+                                    className="bi bi-star-fill"></span></button><button
+                                        className="btn btn-primary hid">Hide</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>project 4</span><button type="button" className="hov btn-link"><span
+                                    className="bi bi-star-fill"></span></button><button
+                                        className="btn btn-primary hid">Hide</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>project 5</span><button type="button" className="hov btn-link"><span
+                                    className="bi bi-star-fill"></span></button><button
+                                        className="btn btn-primary hid">Hide</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>project 6</span><button type="button" className="hov btn-link"><span
+                                    className="bi bi-star-fill"></span></button><button
+                                        className="btn btn-primary hid">Hide</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>project 7</span><button type="button" className="hov btn-link"><span
+                                    className="bi bi-star-fill"></span></button><button
+                                        className="btn btn-primary hid">Hide</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><span>project 8</span><button type="button" className="hov btn-link"><span
+                                    className="bi bi-star-fill"></span></button><button
+                                        className="btn btn-primary hid">Hide</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </>
+        );
+    }
+}
+
+
