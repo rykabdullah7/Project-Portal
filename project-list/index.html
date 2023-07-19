@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <script>
+    <!-- <script>
         document.addEventListener("DOMContentLoaded", function () {
             // Check login status
             var token = sessionStorage.getItem("accessToken");
@@ -24,30 +24,22 @@
                 document.getElementById("content").style.display = "block";
             }
         });
-    </script>
+    </script> -->
 
-    <div class="project-list" id="content" style="display: none;">
-    </div>
+    <div class="project-list" id="content"></div>
 
-    <script src="scripts.js"></script>
-    <script src="login.js"></script>
-    <script
-      src="https://unpkg.com/react@16/umd/react.production.min.js"
-      crossorigin
-    ></script>
-    <script
-      src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
-      crossorigin
-    ></script>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/babel" src="ProjectList.js"></script>
-    <script type="text/babel" src="LoginForm.js"></script>
-
-    <script type="text/babel">
-      ReactDOM.render(<ProjectList />, document.querySelector(".project-list"));
-    </script>
     
+    <script type="text/babel">       
+            ReactDOM.render(<ProjectList />, document.querySelector(".project-list"));
+    </script>
+
+    <script src="scripts.js"></script>
+
 
 </body>
 
