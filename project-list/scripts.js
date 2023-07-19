@@ -1,6 +1,9 @@
-const hideButtons = document.getElementsByClassName("hid");
+
+document.addEventListener("DOMContentLoaded",function(){
+    const hideButtons = document.getElementsByClassName("hid");
 Array.from(hideButtons).forEach((button) => {
     button.addEventListener('click', () => {  
+        console.log("hi");
         const element = button.parentNode;
         const starColor = element.querySelector(".hov > span").style.color;
         if (starColor !== "rgb(218, 165, 32)") {
@@ -10,12 +13,14 @@ Array.from(hideButtons).forEach((button) => {
 })
 
 const unhideButtons = document.getElementById("unhide");
+if(unhideButtons){
 unhideButtons.addEventListener("click", () => {
     Array.from(hideButtons).forEach((button) => {
         const element = button.parentNode;
         element.style.display = 'block';
     })
 })
+}
 
 const stars = document.getElementsByClassName("hov");
 Array.from(stars).forEach((star) => {
@@ -33,4 +38,4 @@ Array.from(stars).forEach((star) => {
     })
 })
 
-
+})
