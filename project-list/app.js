@@ -1,32 +1,15 @@
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isLoggedIn: false,
-    };
+  function handleLoginSuccess() {
+    setIsLoggedIn(true);
   }
 
-  handleLoginSuccess = () => {
-    this.setState({ isLoggedIn: true });
-  };
-
-  render() {
-    const { isLoggedIn } = this.state;
-
-    return (
-        <>
-        {isLoggedIn ? (
-          <ProjectList />
-        ) : (
-          <LoginForm onLoginSuccess={this.handleLoginSuccess} />
-        )}
-      </>
-    );
-  }
+  return (
+    <>
+      {isLoggedIn ? <ProjectList /> : <LoginForm onLoginSuccess={handleLoginSuccess} />}
+    </>
+  );
 }
 
-
-
-
+export default App;
