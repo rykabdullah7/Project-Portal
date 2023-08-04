@@ -12,55 +12,17 @@ function ProjectList() {
     { name: 'project 8', hidden: false, starColor: 'rgb(255, 255, 255)' },
   ]);
 
-  function handleHideClick(index) {
-    setProjects(function (prevProjects) {
-      const updatedProjects = [...prevProjects];
-      const starColor = updatedProjects[index].starColor;
-
-      if (starColor !== 'rgb(218, 165, 32)') {
-        updatedProjects[index].hidden = true;
-      }
-
-      return updatedProjects;
-    });
-  }
-
-  function handleShowAllClick() {
-    setProjects(function (prevProjects) {
-      return prevProjects.map(function (project) {
-        return { ...project, hidden: false };
-      });
-    });
-  }
-
-  function handleStarClick(index) {
-    setProjects(function (prevProjects) {
-      const updatedProjects = [...prevProjects];
-      const currentColor = updatedProjects[index].starColor;
-
-      updatedProjects[index].starColor =
-        currentColor === 'rgb(255, 255, 255)' ? 'rgb(218, 165, 32)' : 'rgb(255, 255, 255)';
-
-      if (updatedProjects[index].starColor === 'rgb(218, 165, 32)') {
-        const starButton = document.getElementById(`star-btn-${index}`);
-        starButton.classList.remove('hov');
-      }
-
-      return updatedProjects;
-    });
-  }
-
   return (
     <>
       <h1>Project Portal</h1>
-      <button id="unhide" className="btn btn-primary" onClick={handleShowAllClick}>
+      <button id="unhide" className="btn btn-primary" onClick={() => setProjects(projects.map(project => ({ ...project, hidden: false })))}>
         Show all projects
       </button>
       <div className="clear"></div>
       <div>
         <table width="100%" className="table-hover custom-table">
           <tbody className="custom-tbody">
-            {projects.map(function (project, index) {
+            {projects.map((project, index) => {
               return (
                 <tr key={index} style={{ display: project.hidden ? 'none' : 'table-row' }}>
                   <td>
@@ -70,16 +32,39 @@ function ProjectList() {
                       type="button"
                       className={`btn-link ${project.starColor === 'rgb(218, 165, 32)' ? '' : 'hov'}`}
                       id={`star-btn-${index}`}
-                      onClick={function () {
-                        handleStarClick(index);
-                      }}
+                      onClick={() => {
+                        setProjects(function (prevProjects) {
+                          const updatedProjects = [...prevProjects];
+                          const currentColor = updatedProjects[index].starColor;
+
+                          updatedProjects[index].starColor =
+                            currentColor === 'rgb(255, 255, 255)' ? 'rgb(218, 165, 32)' : 'rgb(255, 255, 255)';
+
+                          if (updatedProjects[index].starColor === 'rgb(218, 165, 32)') {
+                            const starButton = document.getElementById(`star-btn-${index}`);
+                            starButton.classList.remove('hov');
+                          }
+
+                          return updatedProjects;
+                        });
+                      }
+
+                      }
                     >
                       <span className="bi bi-star-fill" style={{ color: project.starColor }}></span>
                     </button>
 
-                    <button className="btn btn-primary hid" onClick={function () {
-                        handleHideClick(index);
-                      }}>
+                    <button className="btn btn-primary hid" onClick={() => {
+                      setProjects((prevProjects) => {
+                        const updatedProjects = [...prevProjects];
+                        const starColor = updatedProjects[index].starColor;
+                        if (starColor !== 'rgb(218, 165, 32)') {
+                          updatedProjects[index].hidden = true;
+                        }
+
+                        return updatedProjects
+                      });
+                    }}>
                       Hide
                     </button>
                   </td>
