@@ -33,7 +33,7 @@ function ProjectList() {
                       className={`btn-link ${project.starColor === 'rgb(218, 165, 32)' ? '' : 'hov'}`}
                       id={`star-btn-${index}`}
                       onClick={() => {
-                        setProjects(function (prevProjects) {
+                        setProjects((prevProjects) => {
                           const updatedProjects = [...prevProjects];
                           const currentColor = updatedProjects[index].starColor;
 
