@@ -1,7 +1,7 @@
 import './App.css';
 import React,{useState} from 'react';
-import LoginForm from './login';
-import ProjectList from './project-list';
+import LoginForm from './components/login';
+import ProjectList from './components/project-list';
 
 
 function App() {
