@@ -1,5 +1,7 @@
 import React, {useState } from 'react';
-import { FaStar } from 'react-icons/fa';
+import Table from './table';
+import Project from './project';
+
 
 function ProjectList() {
   const [projects, setProjects] = useState([
@@ -13,58 +15,53 @@ function ProjectList() {
     { name: 'project 8', hidden: false, isStarred: false }
   ]);
 
+  const handleStarClick = (index) => {
+    setProjects((prevProjects) => {
+      const updatedProjects = [...prevProjects];
+      updatedProjects[index] = {
+        ...updatedProjects[index],
+        isStarred: !updatedProjects[index].isStarred,
+      };
+      return updatedProjects;
+    });
+  };
+
+  const handleHideClick = (index) => {
+    setProjects((prevProjects) => {
+      const updatedProjects = [...prevProjects];
+      const isStarred = updatedProjects[index].isStarred;
+      if (!isStarred) {
+        updatedProjects[index].hidden = true;
+      }
+      return updatedProjects;
+    });
+  };
+
+  const showHiddenProjects = ()=>{
+    setProjects(
+      projects.map(project => ({...project,hidden:false}))
+    )
+  }
+
   return (
     <>
       <h1>Project Portal</h1>
-      <button id="unhide" className="btn btn-primary" onClick={() => setProjects(projects.map(project => ({ ...project, hidden: false })))}>
+      <button id="unhide" className="btn btn-primary" onClick={showHiddenProjects}>
         Show all projects
       </button>
       <div className="clear"></div>
       <div>
-        <table width="100%" className="table-hover custom-table">
-          <tbody className="custom-tbody">
-            {projects.map((project, index) => (
-              <tr key={index} style={{ display: project.hidden ? 'none' : 'table-row' }}>
-                <td>
-                  <span>{project.name}</span>
+        <Table>
 
-                  <button
-                    type="button"
-                    className={`star ${project.isStarred? '':'star-button'}`}
-                    onClick={() => 
-                      setProjects((prevProjects) => {
-                        const updatedProjects = [...prevProjects];
-                        updatedProjects[index] = {
-                          ...updatedProjects[index],
-                          isStarred: !updatedProjects[index].isStarred,
-                        };
-                  
-                        return updatedProjects;
-                      })
-                    }
-                  >
-                    <FaStar size={30} className='pb-2' color={project.isStarred ? 'rgb(218,165,32)' : 'rgb(211,211,211)'} />
-                  </button>
-
-                  <button className="btn btn-primary hid" onClick={() => 
-                        setProjects((prevProjects) => {
-                          const updatedProjects = [...prevProjects];
-                          const isStarred = updatedProjects[index].isStarred;
-                    
-                          if (!isStarred) {
-                            updatedProjects[index].hidden = true;
-                          }
-                    
-                          return updatedProjects;
-                        })
-                  }>
-                    Hide
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        {projects.map((project, index) => (
+            <Project
+              key={index}
+              project={project}
+              onStarClick={() => handleStarClick(index)}
+              onHideClick={() => handleHideClick(index)}
+            />
+          ))}
+        </Table>
       </div>
     </>
   );
