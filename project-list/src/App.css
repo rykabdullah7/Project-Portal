@@ -49,4 +49,13 @@ td:hover .btn{
   display:none;
 }
 
+.starred .star-icon,
+.star-button .star-icon {
+  color: rgb(218, 165, 32); /* Color for the starred icon */
+}
+
+.star-button .star-icon {
+  color: rgb(211, 211, 211); /* Color for the unstarred icon */
+}
+
 
